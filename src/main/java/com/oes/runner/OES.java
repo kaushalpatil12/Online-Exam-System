@@ -6,6 +6,9 @@ public class OES {
 
 	public static void main(String args[]) {
 		Application.getInstance().lauchApp();
+		
+		
 	}
 
 }
+	
