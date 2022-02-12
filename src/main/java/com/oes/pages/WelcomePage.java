@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.apache.commons.compress.archivers.StreamingNotSupportedException;
+
 import com.oes.app.Application;
 
 public class WelcomePage extends Page {
@@ -48,14 +50,39 @@ public class WelcomePage extends Page {
 	private void updateUI() {
 		panel.setLayout(new BorderLayout(20, 15));
 		
-		String welcomeMessage = "Welcome, " + Application.getInstance().getLoggedInStudent().getFirstName() + "!!";
+		String formatedName = getFormatedName(Application.getInstance().getLoggedInStudent().getFirstName());
+		String welcomeMessage = formatedName;
 		JLabel welcomeLabel = new JLabel(welcomeMessage);
 		
 		panel.add(welcomeLabel, BorderLayout.NORTH);
-		
+		panel.add(getExamRulesPanel(), BorderLayout.CENTER);
 		panel.add(startExamBtn, BorderLayout.SOUTH); 
 		
 		panel.setBorder(new EmptyBorder(10, 10, 20, 10));
+	}
+	
+	private JPanel getExamRulesPanel() {
+		JPanel rulePanel = new JPanel();
+		rulePanel.setLayout(new BorderLayout());
+		String ruleText = "This is a simple user friendly software developed using Java. "
+				+ "It can be applied to schools ,colleges etc to conduct exams. "
+				+ "The procedure for using this software is very easy. "
+				+ "Select one of the exams listed in the menu."
+				+ "After selecting the choice the exam will be started by clicking continue button. "
+				+ "The questions and options are displayed on the screen. "
+				+ "We can choose one of the answer. "
+				+ "After completing the exam the results are displayed on the screen.";
+		ruleText = "<html><body><div style=\" padding: 3px;\"><p style=\" border: 1px solid black; padding: 4px; \">" + ruleText + "</p></div></body></html>";
+		JLabel ruleLabel = new JLabel(ruleText);
+		
+		rulePanel.add(ruleLabel, BorderLayout.CENTER);
+		
+		return rulePanel;
+	}
+	
+	
+	private String getFormatedName(String name) {
+		return "<html> <font color=\"#6C07F3\"> Welcome, " + name + "</font></html>";
 	}
 	
 

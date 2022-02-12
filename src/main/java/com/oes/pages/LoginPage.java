@@ -52,6 +52,8 @@ public class LoginPage extends Page {
 				if(validate(username, password)) {
 					boolean isAuthenticated = Application.getInstance().login(username, password);
 					if(isAuthenticated) {
+						usernameInput.setText("");
+						passwordInput.setText("");
 						close();
 						WelcomePage.getInstance().open();
 					}else {

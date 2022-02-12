@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.oes.constants.FilePaths;
 import com.oes.pojos.Option;
@@ -23,7 +24,7 @@ public class QuestionData {
 		for (Integer row : rows) {
 			if(row == 0) continue;
 			Map<Integer, String> rowData = data.get(row);
-			Set<Integer> cols = rowData.keySet();
+			List<Integer> cols = rowData.keySet().stream().sorted().collect(Collectors.toList());
 			Question question = new Question();
 			for (Integer col : cols) {
 				String value = rowData.get(col);

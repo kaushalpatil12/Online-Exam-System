@@ -1,9 +1,12 @@
 package com.oes.runner;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import com.oes.data.QuestionData;
 import com.oes.data.StudentData;
@@ -25,17 +28,33 @@ public class Temp {
 //		List<Student> students = new StudentData().getAllStudents();
 //		System.out.println("Students ====" + students);
 //		
-//		List<Question> questions = new QuestionData().getAllQuestions();
-//		System.err.println("Questions ====" + questions);
+		List<Question> questions = new QuestionData().getAllQuestions();
+		System.out.println("Questions ====" + questions);
 		
-		String username = "suraj@gmail.com";
-		String emailPattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$";
-		boolean isUsernameValid = Pattern.compile(emailPattern).matcher(username).matches();  
+//		String username = "suraj@gmail.com";
+//		String emailPattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$";
+//		boolean isUsernameValid = Pattern.compile(emailPattern).matcher(username).matches();  
+//		
+//		System.out.println("isUsernameValid====" + isUsernameValid);
+//		
+//		
+//		System.out.println("=====================" + emailValidate(username));
 		
-		System.out.println("isUsernameValid====" + isUsernameValid);
+
+		
+//		List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+//		
+//		
+//		List<Integer> evenNums = numbers.stream().filter( num -> num % 2 != 0).collect(Collectors.toList());
+//		
+//		Optional<Integer> number = numbers.stream().filter(num -> num % 5 == 0).findFirst();
+//		
+//		if(number.isPresent())
+//			System.out.println("-----" + number.get());
+//		
+//		System.out.println("Even Nums= " + evenNums);
 		
 		
-		System.out.println("=====================" + emailValidate(username));
 		
 //		//Blank workbook
 //        XSSFWorkbook workbook = new XSSFWorkbook(); 

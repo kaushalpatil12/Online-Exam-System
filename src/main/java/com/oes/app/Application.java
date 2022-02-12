@@ -28,9 +28,10 @@ public class Application {
 	}
 
 	public void lauchApp() {
-//		LoginPage.getInstance().open();
-		loggedInStudent = new Student();
-		WelcomePage.getInstance().open();
+		LoginPage.getInstance().open();
+//		loggedInStudent = new Student();
+//		loggedInStudent.setFirstName("Kaushal");
+//		WelcomePage.getInstance().open();
 	}
 
 	public boolean login(String email, String password) {

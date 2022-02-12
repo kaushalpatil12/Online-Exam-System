@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import com.oes.pojos.Exam;
 import com.oes.pojos.Option;
 import com.oes.pojos.Question;
+import com.oes.pojos.Result;
 
 public class ExamPage extends Page {
 
@@ -173,11 +174,16 @@ public class ExamPage extends Page {
 	}
 	
 	private void endExamButtonPressed() {
+		Result result = exam.generateResult();
 		System.out.println("--------------------------------------");
 		System.out.println("Ohooo, here are your Results:");
 		System.out.println("--------------------------------------");
-		System.out.println(exam.generateResult());
+		System.out.println(result);
 		System.out.println("--------------------------------------");
+		close();
+		ResultPage.getInstance().setResult(result);
+		ResultPage.getInstance().open();
+		examPage = null;
 	}
 
 	private void prevButtonPressed() {
