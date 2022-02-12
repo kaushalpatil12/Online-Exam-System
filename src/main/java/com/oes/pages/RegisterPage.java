@@ -28,7 +28,7 @@ public class RegisterPage extends Page {
 
 	private RegisterPage() {
 		super();
-		name = "OES - Login";
+		name = "OES - Register";
 		width = 400;
 		height = 500;
 		panel = new JPanel();
@@ -57,11 +57,11 @@ public class RegisterPage extends Page {
 				String firstName = firstNameInput.getText();
 				String lastName = lastNameInput.getText();
 				String qualification = qualificationInput.getText();
-				int mobile = Integer.parseInt(mobileInput.getText());
+				String mobile = mobileInput.getText();
 				String email = emailInput.getText();
 				String password = passwordInput.getText();
 				
-				Student studentToRegister = new Student(firstName, lastName, qualification, mobile, email, password);
+				Student studentToRegister = new Student(0, firstName, lastName, qualification, mobile, email, password);
 				
 				System.out.println("Register button pressed - " + studentToRegister);
 				

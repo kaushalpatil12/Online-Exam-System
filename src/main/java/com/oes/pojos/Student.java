@@ -2,21 +2,35 @@ package com.oes.pojos;
 
 public class Student {
 	
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String qualification;
-	private int mobile;
+	private String mobile;
 	private String email;
 	private String password;
 	
-	public Student(String firstName, String lastName, String qualification, int mobile, String email, String password) {
+	public Student() {
+	}
+	
+	public Student(int id, String firstName, String lastName, String qualification, String mobile, String email,
+			String password) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.qualification = qualification;
 		this.mobile = mobile;
 		this.email = email;
 		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -43,11 +57,11 @@ public class Student {
 		this.qualification = qualification;
 	}
 
-	public int getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(int mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 
@@ -69,8 +83,8 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [firstName=" + firstName + ", lastName=" + lastName + ", qualification=" + qualification
-				+ ", mobile=" + mobile + ", email=" + email + ", password=" + password + "]";
-	}	
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", qualification="
+				+ qualification + ", mobile=" + mobile + ", email=" + email + ", password=" + password + "]";
+	}
 
 }

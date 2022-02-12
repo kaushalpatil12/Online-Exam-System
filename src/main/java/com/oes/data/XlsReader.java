@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.commons.collections4.map.HashedMap;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 
 public class XlsReader {
 	
@@ -33,6 +36,36 @@ public class XlsReader {
 		Cell cell = sheet.getRow(row).getCell(col);
 		cell.setCellValue(data);
 		return writeData();
+	}
+	
+	public Map<Integer, Map<Integer, String>> getAllData() {
+		Map<Integer, Map<Integer, String>> data = new HashedMap<Integer, Map<Integer,String>>();
+		int lastRow = sheet.getLastRowNum();
+		int lastCol = sheet.getRow(0).getLastCellNum();
+		
+		for(int row = 0; row <= lastRow; row++) {
+			Map<Integer, String> rowData = new HashedMap<Integer, String>();
+			for(int col = 0; col < lastCol; col++) {
+				Cell currentCell = sheet.getRow(row).getCell(col);
+				String value = getCellValue(currentCell);
+				rowData.put(col, value);
+			}
+			data.put(row, rowData);
+		}
+		return data;
+	}
+	
+	private String getCellValue(Cell cell) {
+		CellType type = cell.getCellType();
+		
+		switch (type) {
+		case NUMERIC:
+			return String.valueOf(cell.getNumericCellValue());
+		case STRING:
+			return cell.getStringCellValue();
+		default:
+			return "Unsupported Cell Type";
+		}
 	}
 	
 	public String getData(int row, int col) {

@@ -1,8 +1,12 @@
 package com.oes.pages;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Page {
@@ -20,7 +24,9 @@ public class Page {
 		frame = new JFrame(name);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);
-        frame.setLocation(400, 230);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        Point center = new Point(dim.width/2 - frame.getSize().width/2, dim.height/2 - frame.getSize().height/2);
+        frame.setLocation(center);
         frame.getContentPane().add(BorderLayout.CENTER, panel);
 		frame.setVisible(true);
 	}
@@ -29,4 +35,7 @@ public class Page {
 		frame.setVisible(false);
 	}
 
+	public void showMsg(String msg) {
+		JOptionPane.showMessageDialog(panel, msg);
+	}
 }

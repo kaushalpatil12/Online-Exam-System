@@ -1,28 +1,41 @@
 package com.oes.runner;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+import com.oes.data.QuestionData;
+import com.oes.data.StudentData;
 import com.oes.data.XlsReader;
+import com.oes.pojos.Question;
+import com.oes.pojos.Student;
 
 public class Temp {
 
 	public static void main(String args[]) {
 		
-		String oesDataFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\data\\oes.xlsx";
-		System.out.println("Path --- "+ oesDataFilePath);
-		XlsReader xlsReader = new XlsReader(oesDataFilePath, "student");
-		String data = xlsReader.getData(1, 1);
-		System.out.println("data --"+ data);
+//		String oesDataFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\data\\oes.xlsx";
+//		System.out.println("Path --- "+ oesDataFilePath);
+//		XlsReader xlsReader = new XlsReader(oesDataFilePath, "student");
+////		String data = xlsReader.getData(1, 1);
+//		Map<Integer, Map<Integer, String>> data = xlsReader.getAllData();
+//		System.out.println("data --"+ data);
+//		
+//		List<Student> students = new StudentData().getAllStudents();
+//		System.out.println("Students ====" + students);
+//		
+//		List<Question> questions = new QuestionData().getAllQuestions();
+//		System.err.println("Questions ====" + questions);
 		
+		String username = "suraj@gmail.com";
+		String emailPattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$";
+		boolean isUsernameValid = Pattern.compile(emailPattern).matcher(username).matches();  
+		
+		System.out.println("isUsernameValid====" + isUsernameValid);
+		
+		
+		System.out.println("=====================" + emailValidate(username));
 		
 //		//Blank workbook
 //        XSSFWorkbook workbook = new XSSFWorkbook(); 
@@ -68,6 +81,11 @@ public class Temp {
 //            e.printStackTrace();
 //        }
 	}  
+	
+	public static boolean emailValidate(String email) {
+	    Matcher matcher = Pattern.compile("^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$", Pattern.CASE_INSENSITIVE).matcher(email);
+	    return matcher.find();
+	}
 
 }
 

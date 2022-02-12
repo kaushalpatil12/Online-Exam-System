@@ -1,6 +1,6 @@
 package com.oes.runner;
 
-import com.oes.ui.Application;
+import com.oes.app.Application;
 
 public class OES {
 

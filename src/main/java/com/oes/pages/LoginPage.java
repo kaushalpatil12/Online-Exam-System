@@ -3,6 +3,7 @@ package com.oes.pages;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
@@ -12,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.oes.app.Application;
 
 public class LoginPage extends Page {
 
@@ -47,7 +50,13 @@ public class LoginPage extends Page {
 				String username = usernameInput.getText();
 				String password = String.valueOf(passwordInput.getPassword());
 				if(validate(username, password)) {
-					doLogin(username, password);
+					boolean isAuthenticated = Application.getInstance().login(username, password);
+					if(isAuthenticated) {
+						close();
+						WelcomePage.getInstance().open();
+					}else {
+						display("Username or password is wrong, please try again.");
+					}
 				}
 			}
 		});
@@ -61,27 +70,17 @@ public class LoginPage extends Page {
 	}
 	
 	private boolean validate(String username, String password) {
-		//TODO: validate user input here
-		String regex = "[a-z]*";
-		Pattern p = Pattern.compile(regex);//. represents single character  
-		boolean isUsernameValid = p.matcher(username).matches();  
-		
-		System.out.println("isUsernameValid====" + isUsernameValid);
-		
-		if(!isUsernameValid) {
-			display("please enter valid username");
+		if(!emailValidate(username)) {
+			display("please enter valid email id");
 			return false;
 		}
 		return true;
 		
 	}
 	
-	private void doLogin(String username, String password) {
-		if(username.equals("kaushal") && password.equals("pass123")) {
-			display("Login Successful.");
-		}else {
-			display("Username or password is wrong, please try again.");
-		}
+	private boolean emailValidate(String email) {
+	    Matcher matcher = Pattern.compile("^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$", Pattern.CASE_INSENSITIVE).matcher(email);
+	    return matcher.find();
 	}
 	
 	private void display(String msg) {
