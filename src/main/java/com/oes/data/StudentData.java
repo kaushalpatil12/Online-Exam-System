@@ -62,6 +62,13 @@ public class StudentData {
 		return list;
 	}
 	
+	
+	/**
+	 * @author Kaushal
+	 * @param student - object of Student class (the student to be added to XLS file)
+	 * @return	true - if student is added to XLS data successfully,
+	 * 			false - if error while adding the student data
+	 */
 	public boolean addStudent(Student student) {
 		Map<Integer, String> studentData = new HashedMap<Integer, String>();
 		studentData.put(0, String.valueOf(getAllStudents().size() + 1));

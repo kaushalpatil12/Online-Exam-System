@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.oes.constants.ErrorMessages;
 import com.oes.data.StudentData;
 import com.oes.pojos.Student;
 
@@ -71,11 +72,11 @@ public class RegisterPage extends Page {
 				boolean isAdded = studentData.addStudent(studentToRegister);
 				
 				if(isAdded) {
-					display("Registration Successful.");
+					display(ErrorMessages.REGISTRATION_SUCCESSFUL);
 					close();
 					LoginPage.getInstance().open();
 				}else {
-					display("Something went wrong, couldn't register the user. Please try some time later.");
+					display(ErrorMessages.REGISTRATION_FAILURE);
 				}
 				
 			}
