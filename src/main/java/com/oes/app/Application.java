@@ -29,13 +29,11 @@ public class Application {
 
 	public void lauchApp() {
 		LoginPage.getInstance().open();
-//		loggedInStudent = new Student();
-//		loggedInStudent.setFirstName("Kaushal");
-//		WelcomePage.getInstance().open();
 	}
 
 	public boolean login(String email, String password) {
 		List<Student> students = studentData.getAllStudents();
+		System.out.println("Checking login --- users are ---" + students);
 		Optional<Student> matchingStudent = students.stream()
 				.filter(
 						(student) ->  student.getEmail().equalsIgnoreCase(email) && student.getPassword().equals(password)

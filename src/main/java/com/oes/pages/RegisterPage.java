@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.oes.data.StudentData;
 import com.oes.pojos.Student;
 
 public class RegisterPage extends Page {
@@ -25,6 +26,7 @@ public class RegisterPage extends Page {
 	private JTextField passwordInput;
 	private JButton registerBtn;
 	private JButton cancelBtn;
+	private StudentData studentData;
 
 	private RegisterPage() {
 		super();
@@ -41,6 +43,7 @@ public class RegisterPage extends Page {
 		passwordInput = new JTextField(10);
 		cancelBtn = new JButton("Cancel");
 		registerBtn = new JButton("Register");
+		studentData = new StudentData();
 		init();
 	}
 	
@@ -65,7 +68,16 @@ public class RegisterPage extends Page {
 				
 				System.out.println("Register button pressed - " + studentToRegister);
 				
-				//TODO: register the student 
+				boolean isAdded = studentData.addStudent(studentToRegister);
+				
+				if(isAdded) {
+					display("Registration Successful.");
+					close();
+					LoginPage.getInstance().open();
+				}else {
+					display("Something went wrong, couldn't register the user. Please try some time later.");
+				}
+				
 			}
 		});
 		

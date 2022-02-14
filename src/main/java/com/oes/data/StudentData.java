@@ -5,14 +5,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.collections4.map.HashedMap;
+
 import com.oes.constants.FilePaths;
 import com.oes.pojos.Student;
 
 public class StudentData {
 
 	XlsReader oesXlsReader;
+	XlsWriter xlsWriter;
 	public StudentData() {
 		oesXlsReader = new XlsReader(FilePaths.OES_XLS_FILE, "student");
+		xlsWriter = new XlsWriter(FilePaths.OES_XLS_FILE, "student");
 	}
 
 	public List<Student> getAllStudents() {
@@ -56,6 +60,20 @@ public class StudentData {
 			
 		}
 		return list;
+	}
+	
+	public boolean addStudent(Student student) {
+		Map<Integer, String> studentData = new HashedMap<Integer, String>();
+		studentData.put(0, String.valueOf(getAllStudents().size() + 1));
+		studentData.put(1, student.getFirstName());
+		studentData.put(2, student.getLastName());
+		studentData.put(3, student.getQualification());
+		studentData.put(4, student.getMobile());
+		studentData.put(5, student.getEmail());
+		studentData.put(6, student.getPassword());
+		
+		boolean isAdded = xlsWriter.addRow(studentData);
+		return isAdded;
 	}
 
 

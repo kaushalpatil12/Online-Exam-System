@@ -18,6 +18,12 @@ public class Temp {
 
 	public static void main(String args[]) {
 		
+		
+		StudentData studentData = new StudentData();
+		Student student = new Student(2, "test", "last", "dd", "546879213", "test@gmail.com", "test123");
+		studentData.addStudent(student);
+		
+		
 //		String oesDataFilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\data\\oes.xlsx";
 //		System.out.println("Path --- "+ oesDataFilePath);
 //		XlsReader xlsReader = new XlsReader(oesDataFilePath, "student");
@@ -27,9 +33,11 @@ public class Temp {
 //		
 //		List<Student> students = new StudentData().getAllStudents();
 //		System.out.println("Students ====" + students);
-//		
-		List<Question> questions = new QuestionData().getAllQuestions();
-		System.out.println("Questions ====" + questions);
+
+		
+		
+//		List<Question> questions = new QuestionData().getAllQuestions();
+//		System.out.println("Questions ====" + questions);
 		
 //		String username = "suraj@gmail.com";
 //		String emailPattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$";
