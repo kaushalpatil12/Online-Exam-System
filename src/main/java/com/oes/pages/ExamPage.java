@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
+import com.oes.data.ResultsData;
 import com.oes.pojos.Exam;
 import com.oes.pojos.Option;
 import com.oes.pojos.Question;
@@ -175,6 +176,14 @@ public class ExamPage extends Page {
 	
 	private void endExamButtonPressed() {
 		Result result = exam.generateResult();
+		boolean isUploaded = new ResultsData().uploadResultToXls(result);
+		if(isUploaded) {
+			//show user a message - Upload successful
+			System.out.println("Results updated to xls successfully");
+		}else {
+			//show user a message - something went wrong
+			System.out.println("Šomething went wrong while adding results to xls file.");
+		}
 		System.out.println("--------------------------------------");
 		System.out.println("Ohooo, here are your Results:");
 		System.out.println("--------------------------------------");

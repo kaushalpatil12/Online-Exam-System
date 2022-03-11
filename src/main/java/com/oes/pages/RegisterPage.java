@@ -3,7 +3,6 @@ package com.oes.pages;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -91,29 +90,29 @@ public class RegisterPage extends Page {
 		});
 	}
 	
-	private boolean validate(String username, String password) {
-		//TODO: validate user input here
-		String regex = "[a-z]*";
-		Pattern p = Pattern.compile(regex);//. represents single character  
-		boolean isUsernameValid = p.matcher(username).matches();  
-		
-		System.out.println("isUsernameValid====" + isUsernameValid);
-		
-		if(!isUsernameValid) {
-			display("please enter valid username");
-			return false;
-		}
-		return true;
-		
-	}
+//	private boolean validate(String username, String password) {
+//		//TODO: validate user input here
+//		String regex = "[a-z]*";
+//		Pattern p = Pattern.compile(regex);//. represents single character  
+//		boolean isUsernameValid = p.matcher(username).matches();  
+//		
+//		System.out.println("isUsernameValid====" + isUsernameValid);
+//		
+//		if(!isUsernameValid) {
+//			display("please enter valid username");
+//			return false;
+//		}
+//		return true;
+//		
+//	}
 	
-	private void doLogin(String username, String password) {
-		if(username.equals("kaushal") && password.equals("pass123")) {
-			display("Login Successful.");
-		}else {
-			display("Username or password is wrong, please try again.");
-		}
-	}
+//	private void doLogin(String username, String password) {
+//		if(username.equals("kaushal") && password.equals("pass123")) {
+//			display("Login Successful.");
+//		}else {
+//			display("Username or password is wrong, please try again.");
+//		}
+//	}
 	
 	private void display(String msg) {
 		JOptionPane.showMessageDialog(panel, msg);

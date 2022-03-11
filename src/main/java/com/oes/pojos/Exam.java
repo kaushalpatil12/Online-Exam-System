@@ -9,7 +9,7 @@ public class Exam {
 	
 	Student student;
 	List<Question> questions;
-	private Question currentQuestion;
+	Question currentQuestion;
 	int currentQuestionIndex;
 	int totalQuestionCount;
 	int attemptedQuestionCount;
